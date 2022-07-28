@@ -33,6 +33,8 @@ public static Employee getEmployeeDetails(Long employeeId) {
 	return employees.get(employeeId);
 	
 }
+
+
 public static Employee addEmployee (Employee employee) {
 	index+=1;
 	employee.setId(index);
@@ -50,5 +52,7 @@ public static Employee deleteEmployeeDeetails(Long employeeId) {
 
 
 }
+
+
 
 }
