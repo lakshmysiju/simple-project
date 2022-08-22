@@ -1,5 +1,6 @@
 package user.example.login;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.w3c.dom.ls.LSOutput;
 
@@ -153,5 +156,49 @@ public List <LoginUser>findAll() {
          return check;
       
      }
+//	 @PutMapping("/likes/{id}")
+//	 public String upLike(@RequestMapping String id){
+//		 
+//		Optional<FormWrite> data=formRepository.findById(id);
+//		FormWrite alldata=data.get();
+//		System.out.println(alldata.getLike());
+//		Integer like=Integer.parseInt(alldata.getLike());
+//		like=like+1;
+//		String liked=Integer.toString(like);
+//		alldata.setLike(liked);
+//		return "Liked";
+//		 
+//	 }
+	 
+	 
+	 
+	  @PutMapping("/updatelike/{id}")
+      public ResponseEntity<FormWrite> updatelike(@PathVariable("id") String id, @RequestBody FormWrite form) {
+        Optional<FormWrite> data = formRepository.findById(id);
+        if (data.isPresent()) {
+        	FormWrite blog = data.get();
+//        	blog.setCreatorid(tutorial.getCreatorid());
+//        	blog.setCreator(tutorial.getCreator());
+//        	blog.setHeading(tutorial.getHeading());
+//        	blog.setReadme(tutorial.getReadme());
+//        	blog.setContent(tutorial.getContent());
+        	List<String> a = new ArrayList<>();
+        	a=blog.getLikeduser();
+        	a.add(form.getUser());
+        	System.out.println(a);
+        	blog.setLikeduser(a);
+        	int like=Integer.parseInt(form.getLike())+1;
+        	blog.setLike(Integer.toString(like));
+        System.out.println(blog.getLike());
+        
+          return new ResponseEntity<>(formRepository.save(blog), HttpStatus.OK);
+        } else {
+          return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+      }
+	 
+	 
+	 
+	 
 	
 }

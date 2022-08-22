@@ -1,6 +1,8 @@
 package user.example.login;
 
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -16,6 +18,7 @@ public class FormWrite {
 	private String content;
 	private String time;
 	private String like;
+	private List<String> likeduser;
 	private String user;
 	public String getId() {
 		return id;
@@ -65,6 +68,12 @@ public class FormWrite {
 	public void setLike(String like) {
 		this.like = like;
 	}
+	public List<String> getLikeduser() {
+		return likeduser;
+	}
+	public void setLikeduser(List<String> likeduser) {
+		this.likeduser = likeduser;
+	}
 	public String getUser() {
 		return user;
 	}
@@ -72,7 +81,7 @@ public class FormWrite {
 		this.user = user;
 	}
 	public FormWrite(String id, String bid, String userid, String title, String authorName, String content, String time,
-			String like, String user) {
+			String like, List<String> likeduser, String user) {
 		super();
 		this.id = id;
 		this.bid = bid;
@@ -82,6 +91,7 @@ public class FormWrite {
 		this.content = content;
 		this.time = time;
 		this.like = like;
+		this.likeduser = likeduser;
 		this.user = user;
 	}
 	public FormWrite() {
