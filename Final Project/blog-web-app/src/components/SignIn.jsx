@@ -1,6 +1,7 @@
 import { useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import './SignUp.css'
 
 function SignIn()
 {
@@ -46,12 +47,12 @@ function SignIn()
                 <label>
                     Email:
                 </label><br></br>
-                <input type='email' onChange={(e)=>{setEmail(e.target.value)}}  /><br></br><br></br>
+                <input type='email' className="email" onChange={(e)=>{setEmail(e.target.value)}}  /><br></br><br></br>
                 <label>
                     Password:
                 </label><br></br>
-                <input type='password' onChange={(e)=>{setPassword(e.target.value)}} /><br></br><br></br>
-                <input type='submit' onClick={handleChange} value='Login' /><br></br>
+                <input type='password' className="psw" onChange={(e)=>{setPassword(e.target.value)}} /><br></br><br></br>
+                <input type='submit' className="signupbtn" onClick={handleChange} value='Login' /><br></br>
                 <a href="/">Create a new account!</a>
             </form>
         </div>

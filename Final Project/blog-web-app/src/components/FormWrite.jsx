@@ -16,6 +16,7 @@ function FormWrite() {
   const [content, setcontent] = useState({});
   const [num,setNumber]=React.useState()
   const[like,setLike]=React.useState(0)
+  const[likeduser,setLikeduser]=React.useState([])
   
 console.log(data.username)
 console.log(data.id)
@@ -33,7 +34,7 @@ useEffect(() => {
 }, [num]);
 
 const handleSubmit=(event)=>{
-let blog={bid,userid,title,authorName,content,time,like}
+let blog={bid,userid,title,authorName,content,time,like,likeduser}
 console.log(blog)
 event.preventDefault();
   alert("Blog added")
